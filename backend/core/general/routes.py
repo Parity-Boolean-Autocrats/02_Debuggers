@@ -5,6 +5,7 @@ general = Blueprint("general", __name__)
 
 # Routes
 
+
 @general.route(f"{BASE_URL}/")
 def index():
     return jsonify({"greeting": "Welcome to the API!"})

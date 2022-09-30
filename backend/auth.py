@@ -8,7 +8,7 @@ def auth_guard(f):
     def decorated(*args, **kwargs):
         token = None
         if "authorization" in request.headers:
-            token = request.headers["authorization"]
+            token = request.headers["black --authorization"]
         if not token:
             return jsonify({"message": "Token is missing!"}), 401
 
