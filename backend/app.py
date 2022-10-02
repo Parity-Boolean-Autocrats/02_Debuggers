@@ -104,32 +104,32 @@ def predict():
     }
 
     age = request.form["age"]
-    education = request.form["education"]
-    institution = request.form["institution"]
-    it = request.form["it"]
-    location = request.form["location"]
-    loadshed = request.form["loadshed"]
-    fincon = request.form["fincon"]
-    internet = request.form["internet"]
-    network = request.form["network"]
-    selflms = request.form["selflms"]
-    duration = request.form["duration"]
-    device = request.form["device"]
+    education = request.form["eduLevel"]
+    institution = request.form["institutionType"]
+    it = request.form["ITStudent"]
+    location = request.form["Location"]
+    loadshed = request.form["Load-Shedding"]
+    fincon = request.form["FinancialCondtion"]
+    internet = request.form["InternetType"]
+    network = request.form["NetworkType"]
+    selflms = request.form["Lms"]
+    duration = request.form["ClassDuration"]
+    device = request.form["Device"]
 
     df = pd.DataFrame(
         {
-            "Age": {0: "21-25"},
-            "Education Level": {0: "University"},
-            "Institution Type": {0: "Non Government"},
-            "IT Student": {0: "No"},
-            "Location": {0: "Yes"},
-            "Load-shedding": {0: "Low"},
-            "Financial Condition": {0: "Mid"},
-            "Internet Type": {0: "Wifi"},
-            "Network Type": {0: "4G"},
-            "Class Duration": {0: "3-6"},
-            "Self Lms": {0: "No"},
-            "Device": {0: "Tab"},
+            "Age": {0: age},
+            "Education Level": {0: education},
+            "Institution Type": {0: institution},
+            "IT Student": {0: it},
+            "Location": {0: location},
+            "Load-shedding": {0: loadshed},
+            "Financial Condition": {0: fincon},
+            "Internet Type": {0: internet},
+            "Network Type": {0: network},
+            "Class Duration": {0: duration},
+            "Self Lms": {0: selflms},
+            "Device": {0: device},
         }
     )
 
@@ -146,8 +146,10 @@ def predict():
     pickled_model = pickle.load(open("model.pkl", "rb"))
     y_pred = pickled_model.predict(scaled_df)
 
-    for x in y_pred:
-        return pred[int(x)]
+    output= pred[int(y_pred[0])]
+
+    return render_template('form-input.html', output=output)
+    
 
 
 if __name__ == "__main__":

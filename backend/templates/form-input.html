@@ -25,7 +25,7 @@
               <div class="menu-hamburger"></div>
             </div>
             <div class="logo">
-              <img src="images/logo.png">
+              <img src="images/logo3.png" height="80"/>
             </div>
             <div class="menu-items">
               <div class="menu">
@@ -34,7 +34,7 @@
                   <li><a href="/about-us">About Us</a></li>
                   <li><a href="/services">Services</a></li>
                   <li><a href="/blog">Blog</a></li>
-                  <li><a href="/contact-us">Contact Us</a></li>
+                  <li><a href="/contact-us">Check Adaptivity</a></li>
                 </ul>
               </div>
             </div>
@@ -74,26 +74,25 @@
               <div class="sup-content">
                 <div class="head-content">
                   <h2>Instructions</h2>
+                  <p>Check how adaptive your instituion's students are for online classes</p>
                   <p>Fill in the shown factors based on students current condition. Our
                     Algorithm will provide optimal approach for adjustment of external factors
                     for student in order to achieve a better quality of education</p>
-                </div>
-
-                <div class="contact-title">
-                  <h2>Contact Details</h2>
-                  <ol>
-                    <li><i class="far fa-map-marker-check"></i>Mumbai</li>
-                    <li><i class="fal fa-mobile"></i>+91 8850604441</li>
-                    <li><i class="fal fa-envelope"></i>debuggers@gmail.com</li>
-                    <li><i class="fal fa-clock"></i>Mon - Sat 8.00 - 18.00.</li>
-                  </ol>
                 </div>
               </div>
             </div>
 
             <div class="sup-card-contact-0a">
               <div class="contact-a1">
-                <form action="{{ url_for('form_submit') }}"
+
+                {% if output %}
+                <div class="alert alert-success" role="alert">
+                  <b>{{ output['status'] }}</b>
+                  <p>{{ output['suggestions'] }}</p>
+                </div>
+                {% else %}
+
+                <form action="{{ url_for('predict') }}"
                       method="post">
                   <div class="dived d-flex">
                     <div class="form-group">
@@ -314,7 +313,7 @@
                     </div>
                   </div>
                   <input type="submit"
-                         class="">
+                         class="btn btn-primary">
               </div>
 
 
@@ -322,6 +321,8 @@
 
 
             </form>
+
+            {%endif%}
           </div>
         </div>
       </div>
@@ -364,7 +365,7 @@
               <li><a href="#"><i class="fal fa-angle-double-right"></i>About Us</a></li>
               <li><a href="#"><i class="fal fa-angle-double-right"></i>Services</a></li>
               <li><a href="#"><i class="fal fa-angle-double-right"></i>Blog</a></li>
-              <li><a href="#"><i class="fal fa-angle-double-right"></i>Contact Us</a></li>
+              <li><a href="#"><i class="fal fa-angle-double-right"></i>Check Adaptivity</a></li>
             </ol>
           </div>
         </div>
@@ -376,7 +377,7 @@
               <li><a href="#"><i class="fal fa-angle-double-right"></i>About Us</a></li>
               <li><a href="#"><i class="fal fa-angle-double-right"></i>Services</a></li>
               <li><a href="#"><i class="fal fa-angle-double-right"></i>Blog</a></li>
-              <li><a href="#"><i class="fal fa-angle-double-right"></i>Contact Us</a></li>
+              <li><a href="#"><i class="fal fa-angle-double-right"></i>Check Adaptivity</a></li>
             </ol>
           </div>
         </div>
