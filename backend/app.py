@@ -33,9 +33,9 @@ def contact():
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
 
-    pred = {0:{'status':'Low','suggestions':[]}, 
-        1:{'status':'Moderate','suggestions':[]}, 
-        2:{'status':'High','suggestions':[]}}
+    pred = {0:{'status':'Low','suggestions':['Test']}, 
+        1:{'status':'Moderate','suggestions':['Test']}, 
+        2:{'status':'High','suggestions':['Test']}}
 
     age = request.form['age']
     education = request.form['education']
