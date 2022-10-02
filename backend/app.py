@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import pickle
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
+from random import choice
 
 app = Flask(__name__, static_folder="static", static_url_path="")
 
@@ -66,10 +67,23 @@ def contact():
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
 
+    suggestions = {
+        0: [
+            "Please check whether the student is attending classes for an optimal period of time, ideally 1-3 hours, see to it whether the sessions they are attending are interactive and easy to understand.",
+            "Please check whether the hardware infrastructure at your end (handheld devices, computers, etc.) is sufficient for the student to be comfortably learning online.",
+            "Please try to improve the bandwidth and connectivity of your network in order to improve the quality and experience of online learning.",
+        ],
+        1: [
+            "A little bit of assistance with online teaching, ensuring that the student is able to understand what is being taught should help in improving the student's adaptivity",
+            "Try to make slight improvements in the quality of internet and networks in use to make the process of learning relatively easier for the student",
+        ],
+        2: ["The student is very adaptive to online learning. Well done!"],
+    }
+
     pred = {
-        0: {"status": "Low", "suggestions": ["Test"]},
-        1: {"status": "Moderate", "suggestions": ["Test"]},
-        2: {"status": "High", "suggestions": ["Test"]},
+        0: {"status": "Low", "suggestions": choice(suggestions[0])},
+        1: {"status": "Moderate", "suggestions": choice(suggestions[1])},
+        2: {"status": "High", "suggestions": choice(suggestions[2])},
     }
 
     age = request.form["age"]
