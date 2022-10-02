@@ -28,7 +28,24 @@ def services():
 
 @app.route("/contact-us")
 def contact():
-    return render_template("contact-us.html")
+    # return render_template("form-input.html")
+    return render_template("form-input.html")
+
+@app.route("/form-submit", methods=["POST"])
+def form_submit():
+    print(request.form['age'])
+    print(request.form['eduLevel'])
+    print(request.form['institutionType'])
+    print(request.form['FinancialCondtion'])
+    print(request.form['Lms'])
+    print(request.form['InternetType'])
+    print(request.form['ITStudent'])
+    print(request.form['Location'])
+    print(request.form['NetworkType'])
+    print(request.form['ClassDuration'])
+    print(request.form['Device'])
+    print(request.form['Load-Shedding'])
+    return "Hell"
 
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
